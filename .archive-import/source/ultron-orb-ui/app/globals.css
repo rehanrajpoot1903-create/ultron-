@@ -1,0 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap");
+
+:root {
+  /* -- Ultron token system -- */
+  --void: #0a0806;          /* base background, scorched black */
+  --iron: #1c1613;          /* panel / recessed surfaces */
+  --seam: #3a2620;          /* fracture lines, dividers, muted rust */
+  --oxblood: #7a1e1e;       /* primary structural accent */
+  --ember: #d4401f;         /* active / hot accent, molten core */
+  --amber: #d69a34;         /* warning / secondary readouts */
+  --ash: #cdc4b8;           /* primary text, cooled ash */
+  --ash-dim: #7d766c;       /* secondary text */
+
+  --font-display: "Oswald", "Arial Narrow", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--void);
+  color: var(--ash);
+  font-family: var(--font-mono);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* faint scored-metal texture across the whole viewport */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image: repeating-linear-gradient(
+      115deg,
+      rgba(122, 30, 30, 0.035) 0px,
+      rgba(122, 30, 30, 0.035) 1px,
+      transparent 1px,
+      transparent 3px
+    ),
+    radial-gradient(ellipse at 50% 50%, transparent 55%, rgba(0, 0, 0, 0.65) 100%);
+}
+
+button {
+  font-family: inherit;
+}
+
+::selection {
+  background: var(--oxblood);
+  color: var(--ash);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
